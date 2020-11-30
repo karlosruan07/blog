@@ -1,46 +1,15 @@
-{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'blog/static/css/blog.css' %}">
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+{% extends 'blog/base.html' %}
 
-    <title>Framework Django</title>
-    
-</head>
-
-<body>
-    
-    <div >
-        <h1><a href="/">Blog feito com o Framework Django</a></h1><br><br>
-    </div>
-
-    <!--<div>
-        <p>publicado: xx.xx.xx, xx.xx.xx</p>
-        <h2><a href="">Meu primeiro post</a></h2>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    </div>
-
-    <div>
-        <p>publicado: xx.xx.xx, xx:xx</p>
-        <h2><a href="">Meu segundo post</a></h2>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-    </div> 
--->
+{% block content %}
     {% for post in posts %}
-        <div>
-            <h1> Autor: {{post.author}} </h1>
-            <p> Publicado em : {{post.created_data}} </p>
-            <h2><a href=""> {{ post.title }} </a></a></h2>
-            <p> {{post.text|linebreaksbr }} </p> <!--linebreaksbr (essa função quebra a um texto a cada parágrafo)-->
-
-        </div>
-    {% endfor %} 
-    
-</body>
-</html>
+    <div class="post">
+        <div class="date">
+            <h1 id="autor"> Autor: {{post.author}} </h1>
+                <p>Publicado em : {{ post.created_data }}</p>
+                    </div>
+                    <h2><a href="">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+    {% endfor %}
+{% endblock %}
