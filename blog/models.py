@@ -13,6 +13,7 @@ class Post(models.Model):#o nome da classe é Post (ela tem que iniciar com mai�
     def publish(self): #função publish
         self.published_date = timezone.now()
         self.save()
+        
 
     def __str__(self): #quando se usa o __str__ é porque irá retorna um string
         return self.title
