@@ -47,6 +47,3 @@ def post_edit(request, pk): #função para editar um post
      else:
          form = PostForm(instance=post)
      return render(request, 'blog/post_edit.html', {'form': form})
-
-
-
