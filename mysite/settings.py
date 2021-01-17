@@ -124,6 +124,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static') #Alterei aqui para adicionar os a
 
 
 
-
-
-

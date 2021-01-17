@@ -17,3 +17,7 @@ class Post(models.Model):#o nome da classe é Post (ela tem que iniciar com mai�
 
     def __str__(self): #quando se usa o __str__ é porque irá retorna um string
         return self.title
+
+#app teste para enviar arquivos;
+    
+
