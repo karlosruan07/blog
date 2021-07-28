@@ -1,21 +1,59 @@
-
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="post">
-        {% if post.published_date %} <!--verifica se o post da published_date não está vazia -->
-            <div class="date">
-                {{ post.published_date }}
+
+<div class="row">
+    <div class="col s12">
+        <section>
+            <h3 class="title modal-trigger"><a>{{ post.title }}</a></h3>
+        </section>
+
+        <section>
+            <p>{{ post.text }}</p>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col s6">
+                    <div class="center">
+                        <a><button data-target="modal_editar"
+                                class="btn waves-effect waves-light btn modal-trigger"><i
+                                    class="material-icons">edit</i>
+                                EDITAR</button></a>
+                    </div>
+                </div>
+
+                <div id="modal_editar" class="modal">
+                    <div class="modal-content">
+                        <h4>Realmente Deseja Editar ?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                        <a href="{% url 'post-edit' post.pk %}" class="modal-close waves-effect waves-green btn-flat">Sim</a>
+                    </div>
+                </div>
+
+                <div class="col s6">
+                    <div class="center">
+                        <a><button data-target="modal2"
+                                class="btn waves-effect waves-light btn modal-trigger"><i
+                                    class="material-icons">delete</i>
+                                DELETAR</button></a>
+                    </div>
+                </div>
+
+                <div id="modal2" class="modal">
+                    <div class="modal-content">
+                        <h4>Realmente Deseja Apagar ?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                        <a href="{% url 'post-delete' post.pk %}" class="modal-close waves-effect waves-green btn-flat">Sim</a>
+                    </div>
+                </div>
+
             </div>
-        {% endif %}
-        
-        {% if user.is_authenticated %}
-        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        {% endif %}
-
-
-        <h2>{{ post.title }}</h2>
-        <p> {{ post.text|linebreaksbr}} </p>
+        </section>
     </div>
+</div>
 
 {% endblock %}

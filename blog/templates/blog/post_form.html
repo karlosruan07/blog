@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h3 class="title center">Novo Post !</h3>
+
+    <form method="POST" class="post-form" style="margin: 2%;">
+    {% csrf_token %} 
+        
+    <div class="input-field">
+    <i class="material-icons prefix">title</i>
+    {{ form.title }}
+    <label for="{{ form.title.auto_id }}">{{ form.title.label }}</label>
+    </div>
+
+    <div class="input-field">
+        <i class="material-icons prefix">description</i>
+        {{ form.text }}
+        <label for="{{ form.text.auto_id }}">{{ form.text.label }}</label>
+        </div>
+    
+    <div class="center"><button type="submit" class="btn purple black-text">{{ titulo_botao }}</button></div>
+
+    </form>
+
+{% endblock %}

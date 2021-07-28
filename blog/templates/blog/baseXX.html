@@ -1,0 +1,86 @@
+{% load static %}
+<!--É preciso dessa tag django para carregar os arquivos estáticos-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- IMPORT DO MATERIALIZE CSS -->
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {% block title %}
+    <title>Blog com Django</title>
+    {% endblock %}
+
+</head>
+
+<body>
+    <div>
+        <div class="navbar-fixed">
+            <nav class="">
+                <div class="nav-wrapper container">
+                    <a href="#!" class="brand-logo">Logo</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="sass.html">Sass</a></li>
+                        <li><a href="badges.html">Components</a></li>
+                        <li><a href="collapsible.html">Javascript</a></li>
+                        <li><a href="mobile.html">Mobile</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <ul class="sidenav" id="mobile-demo">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">Javascript</a></li>
+                <li><a href="mobile.html">Mobile</a></li>
+            </ul>
+        </div>
+
+
+
+
+        {% if user.is_authenticated %}
+        <!-- <a href="{% url 'post_new' %}" class="left-menu"><span class="glyphicon glyphicon-plus"></span></a>     criando uma url para um novo post-->
+        <h5>VOCÊ ESTÁ AUTENTICADO !!</h5>
+        <i class="material-icons">add_box</i>
+
+        {% endif %}
+
+
+    </div>
+    <div class="content container">
+        <div class="row">
+            Adicionar posts
+            <a href="{% url 'post_new' %}"> <i class="material-icons">add_box</i></a>
+
+            <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <!--JavaScript at end of body for optimized loading  IMPORTANDO O ARQUIVO JS DO MATERIALIZE-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+</body>
+
+<footer id="teste">
+    <p>&copy;Rodapé</p>
+    <!--<img id="rod_imagem" src=" {% static 'img/django.png' %} " alt=""> -->
+</footer>
+
+</html>
