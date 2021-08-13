@@ -19,5 +19,8 @@ from django.urls import path, include #o include serve para incluir um arquivo i
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),#tudo o que virá sem diretórios na url será redireciondo para esse arquivo
+
+    path('',include('django.contrib.auth.urls')),
+
 ]
 

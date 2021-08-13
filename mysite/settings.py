@@ -123,6 +123,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static') #Alterei aqui para adicionar os arquivos estáticos
 
+#AUTENTICAÇÃO
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'login'
+
 
 django_heroku.settings(locals())
 
