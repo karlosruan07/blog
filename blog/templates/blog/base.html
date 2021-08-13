@@ -22,60 +22,82 @@
 
 <body>
     <!--INICIO DO HEADER-->
-    {% block navbar %}
-    <header>
-        <div class="navbar-fixed">
-            <nav class="black z-depth-3">
-                <div class="nav-wrapper container">
-                    <a href="{% url 'index' %}" class="brand-logo"><img src="{% static 'img/logo.png' %}" alt="" height="60px"></a>
-                    <a href="{% url 'post-new' %}" class="btn-floating pulse btn-large halfway-fab waves-effect waves-light purple">
-                        <i class="material-icons">add</i>
-                    </a>
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons"
-                            style="color: purple;">menu</i></a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="{% url 'index' %}" class="purple-text"><i
-                                    class="material-icons left">home</i>INÍCIO</a></li>
-                        <li><a href="#" class="purple-text"><i class="material-icons left">contacts</i> CONTATO</a></li>
-                        <li><a href="#" class="purple-text"><i class="material-icons left">info</i> SOBRE</a></li>
-                        <li><a href="#" class="black-text purple dropdown-trigger btn" data-target='dropdown1'><i
-                                    class="material-icons left">face</i>MINHA CONTA <i
-                                    class="material-icons left">expand_more</i></a>
-                        </li>
 
-                        <ul id='dropdown1' class='dropdown-content'>
-                            <li><a href="#">ADICIONAR POST</a></li>
-                            <li class="divider" tabindex="-1"></li>
-                            <li><a href="#">ENTRAR</a></li>
+    <section>
+        <header>
+            {% block navbar %}
+            <!-- INICIO DO MENU MOBILE -->
+
+            <ul id="slide-out" class="sidenav">
+                <li>
+                    <div class="user-view">
+                        <div class="background">
+                            <img src="{% static 'img/moldura_mobile.jpg' %}">
+                        </div>
+                        <a href="#user"><img class="circle" src="{% static 'img/avatar_femenino.png' %}"></a>
+                        <a href="#name"><span class="white-text name">Ana Maria</span></a>
+                        <a href="#email"><span class="white-text email">anamaria@gmail.com</span></a>
+                    </div>
+                </li>
+                <li><a href="#"><i class="material-icons">description</i>Alterar
+                        Dados</a></li>
+                <li><a href="#"><i class="material-icons">password</i>Alterar Senha</a></li>
+                <li><a href="#"><i class="material-icons">lock</i>Esqueci Minha Senha</a></li>
+                <li><a href="#"><i class="material-icons">login</i>Entrar</a></li>
+                <li><a href="#"><i class="material-icons">logout</i>Sair</a></li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li><a class="subheader">Informações Adicionais</a></li>
+            </ul>
+
+            <!-- FIM DO MENU MOBILE -->
+
+            <!-- INICIO DA NAVBAR -->
+            <div class="navbar-fixed">
+                <nav class="black z-depth-3">
+                    <div class="nav-wrapper container">
+                        <a href="{% url 'index' %}" class="brand-logo"><img src="{% static 'img/logo.png' %}" alt=""
+                                height="60px"></a>
+                        <a href="{% url 'post-new' %}"
+                            class="btn-floating pulse btn-large halfway-fab waves-effect waves-light purple">
+                            <i class="material-icons">add</i>
+                        </a>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"
+                                style="color: purple;">menu</i></a>
+
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href="{% url 'index' %}" class="purple-text"><i
+                                        class="material-icons left">home</i>INÍCIO</a></li>
+                            <li><a href="#" class="purple-text"><i class="material-icons left">contacts</i> CONTATO</a>
+                            </li>
+                            <li><a href="#" class="purple-text"><i class="material-icons left">info</i> SOBRE</a></li>
+                            <li><a href="#" class="black-text purple dropdown-trigger btn" data-target='dropdown1'><i
+                                        class="material-icons left">face</i>MINHA CONTA <i
+                                        class="material-icons left">expand_more</i></a>
+                            </li>
+
+                            <ul id='dropdown1' class='dropdown-content'>
+                                <li><a href="#">ADICIONAR POST</a></li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li><a href="#">ENTRAR</a></li>
+
+                            </ul>
 
                         </ul>
+                    </div>
+                </nav>
 
-                    </ul>
-                </div>
-            </nav>
-
-            <ul class="sidenav black" id="mobile-demo">
-                <li><a href="#" class="purple-text"><i class="material-icons" style="color: purple;">home</i> HOME</a>
-                </li>
+                <ul id='dropdown2' class='dropdown-content'>
+                    <li><a href="#">ADICIONAR POST</a></li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a href="#">ENTRAR</a></li>
+                </ul>
                 <div class="divider purple"></div>
-                <li><a href="#" class="purple-text"><i class="material-icons" style="color: purple;">info</i> INFO</a>
-                </li>
-                <div class="divider purple"></div>
-                <li><a href="#" class="black-text dropdown-trigger btn purple" data-target='dropdown2'><i
-                            class="material-icons left" style="color: black-text;">face expand_more</i> MINHA CONTA </a>
-                </li>
-            </ul>
-
-            <ul id='dropdown2' class='dropdown-content'>
-                <li><a href="#">ADICIONAR POST</a></li>
-                <li class="divider" tabindex="-1"></li>
-                <li><a href="#">ENTRAR</a></li>
-
-            </ul>
-            <div class="divider purple"></div>
-        </div>
-    </header>
-    {% endblock %}
+            </div>
+            {% endblock %}
+        </header>
+    </section>
     <!--FIM DO HEADER-->
 
     <!--INICIO DO MAIN-->
@@ -93,28 +115,52 @@
     <!--INICIO DO FOOTER-->
     <section>
         {% block footer %}
-        <footer class="page-footer black purple-text">
+        <footer class="page-footer black">
             <div class="container">
                 <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="purple-text">Biblioteca Virtual</h5>
-                        <p class="purple-text-lighten-4">Conteudo do subtitulo.</p>
+                    <div class="col s12">
+                        <div><a href="#!"><img class="brand-logo z-depth-5" src="{% static 'img/logo.png' %}" alt="logo"
+                                    height="60"></a></div>
+                        <div>
+                            <p class="lighten-1 purple-text" style="text-align: justify;">Projeto feito com o objetivo
+                                de postar artigos no blog,
+                                o mesmo tem as principais funções que um sistema WEB pode oferecer para o usuário como :
+                                criar, visualizar, editar e deletar os posts.</p>
+                        </div>
                     </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="purple-text">Links Úteis</h5>
+                </div>
+                <div class="divider purple"></div>
+
+                <div class="row">
+                    <div class="col s6">
+                        <h6 class="purple-text"><strong>CONTATOS</strong></h6>
                         <ul>
-                            <li><a class="purple-text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="purple-text-lighten-3" href="#!">Link 2</a></li>
-                            <li><a class="purple-text-lighten-3" href="#!">Link 3</a></li>
-                            <li><a class="purple-text-lighten-3" href="#!">Link 4</a></li>
+                            <li><a class="purple-text text-lighten-3" href="#!">teste@gmail.com</a></li>
+                            <li><a class="purple-text text-lighten-3" href="#!">+55 093 xxxxx-xxxx</a></li>
                         </ul>
+                    </div>
+
+                    <div class="col s6">
+                        <h6 class="purple-text"><strong>SIGA-NOS NAS REDES SOCIAIS</strong></h6>
+
+                        <div class="row">
+                            <div class="col s4">
+                                <img src="{% static 'img/facebook_.png' %}" alt="50px" width="50px">
+                            </div>
+
+                            <div class="col s4">
+                                <img src="{% static 'img/instagram_.png' %}" alt="50px" width="50px">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="divider white"></div>
             <div class="footer-copyright">
-                <div class="container purple-text center">
-                    © 2021 Copyright
-                    <a class="purple-text-lighten-4 right" href="#!">Redes Sociais.</a>
+                <div class="container">
+                    <div class="center purple-text">
+                        © 2021 - Todos os direitos reservados.
+                    </div>
                 </div>
             </div>
         </footer>
