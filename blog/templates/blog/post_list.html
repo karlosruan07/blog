@@ -7,6 +7,9 @@
     <h3><a href="{% url 'post-detail' pk=post.pk %}">{{ post.title }}</a></h3>
     <!--url detail cria uma url automaticamente, o pk é relacionado a chave primaria-->
     <p><b>Publicado em :</b> {{ post.created_data }}</p>
+
+    <p><b>Autor :</b> {{ post.author}}</p>
+
     <p class="truncate">{{ post.text|linebreaksbr }}</p>
 </div>
 {% endfor %}

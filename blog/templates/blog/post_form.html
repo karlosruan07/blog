@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<h3 class="title center">Novo Post !</h3>
+<h3 class="title center">{{ titulo }}</h3>
 
     <form method="POST" class="post-form" style="margin: 2%;">
     {% csrf_token %} 

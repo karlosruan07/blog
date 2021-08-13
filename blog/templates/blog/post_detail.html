@@ -15,10 +15,16 @@
             <div class="row">
                 <div class="col s6">
                     <div class="center">
+
+                        {% if request.user.is_authenticated %}
+
                         <a><button data-target="modal_editar"
                                 class="btn waves-effect waves-light btn modal-trigger"><i
                                     class="material-icons">edit</i>
                                 EDITAR</button></a>
+                        
+                        {% endif %}
+
                     </div>
                 </div>
 
@@ -34,10 +40,16 @@
 
                 <div class="col s6">
                     <div class="center">
+
+                        {% if request.user.is_authenticated %}
+
                         <a><button data-target="modal2"
                                 class="btn waves-effect waves-light btn modal-trigger"><i
                                     class="material-icons">delete</i>
                                 DELETAR</button></a>
+
+                        {% endif %}
+
                     </div>
                 </div>
 

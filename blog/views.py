@@ -6,16 +6,10 @@ from django.contrib.auth.models import User
 from .forms import PostForm  #importa do arquivo form.py a classe PostForm
 from django.shortcuts import redirect #importa uma função de redirecionamento de um usuario
 
-# Create your views here.
+from django.contrib.auth.decorators import login_required
 
 
-def index(request):
-
-    #teste = Post.objects.all()  #Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    posts = Post.objects.order_by('-created_data')
-    return render(request, 'blog/post_list.html', {'posts': posts})
-
-
+@login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -29,20 +23,29 @@ def post_new(request):
     else:
         form = PostForm()
         contexto = {
+            "titulo": "Novo Post !",
             "form":form,
             "titulo_botao":"Enviar"
         }
     return render(request, 'blog/post_form.html', contexto) 
 
 
+def index(request):
+
+    #teste = Post.objects.all()  #Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts = Post.objects.order_by('-created_data')
+    #posts = Post.objects.filter(author=request.user)
+    return render(request, 'blog/post_list.html', {'posts': posts})
+
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
-        
+
+@login_required        
 def post_edit(request, pk): #função para editar um post
-     post = get_object_or_404(Post, pk=pk)
+     post = get_object_or_404(Post, pk=pk, author=request.user)#filta a linha da tabela pelo ID e pelo usuário que está autenticado
      if request.method == "POST":
          form = PostForm(request.POST, instance=post)
          if form.is_valid():
@@ -53,12 +56,13 @@ def post_edit(request, pk): #função para editar um post
              return redirect('index')
      else:
          form = PostForm(instance=post)
-         contexto = {"form":form, "titulo_botao":"Salvar"}
+         contexto = {"titulo":"Editando Post !","form":form, "titulo_botao":"Salvar"}
      return render(request, 'blog/post_form.html', contexto)
 
 
+@login_required
 def post_delete(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+    post = get_object_or_404(Post, pk=pk, author=request.user)
     post.delete()
     return redirect('index')
 
