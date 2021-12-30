@@ -1,5 +1,7 @@
 {% extends 'blog/base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <div class="row">
@@ -20,7 +22,7 @@
 
                         <a><button data-target="modal_editar"
                                 class="btn waves-effect waves-light btn modal-trigger"><i
-                                    class="material-icons">edit</i>
+                                    class="material-icons"><img src="{% static 'icons/mode_edit.svg' %}" alt=""></i>
                                 EDITAR</button></a>
                         
                         {% endif %}
@@ -34,7 +36,7 @@
                     </div>
                     <div class="modal-footer">
                         <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                        <a href="{% url 'post-edit' post.pk %}" class="modal-close waves-effect waves-green btn-flat">Sim</a>
+                        <a href="{% url 'blog:post-edit' post.pk %}" class="modal-close waves-effect waves-green btn-flat">Sim</a>
                     </div>
                 </div>
 
@@ -45,7 +47,7 @@
 
                         <a><button data-target="modal2"
                                 class="btn waves-effect waves-light btn modal-trigger"><i
-                                    class="material-icons">delete</i>
+                                    class="material-icons"><img src="{% static 'icons/delete.svg' %}" alt=""></i>
                                 DELETAR</button></a>
 
                         {% endif %}
@@ -59,7 +61,7 @@
                     </div>
                     <div class="modal-footer">
                         <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                        <a href="{% url 'post-delete' post.pk %}" class="modal-close waves-effect waves-green btn-flat">Sim</a>
+                        <a href="{% url 'blog:post-delete' post.pk %}" class="modal-close waves-effect waves-green btn-flat">Sim</a>
                     </div>
                 </div>
 

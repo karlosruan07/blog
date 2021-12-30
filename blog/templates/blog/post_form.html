@@ -1,19 +1,22 @@
 {% extends 'blog/base.html' %}
 
+{% load static %}
+
 {% block content %}
 <h3 class="title center">{{ titulo }}</h3>
 
-    <form method="POST" class="post-form" style="margin: 2%;">
+    <form method="POST" style="margin: 2%;">
+
     {% csrf_token %} 
         
     <div class="input-field">
-    <i class="material-icons prefix">title</i>
+    <i class="material-icons prefix"><img src="{% static 'icons/title.svg' %}"></i>
     {{ form.title }}
     <label for="{{ form.title.auto_id }}">{{ form.title.label }}</label>
     </div>
 
     <div class="input-field">
-        <i class="material-icons prefix">description</i>
+        <i class="material-icons prefix"><img src="{% static 'icons/description.svg' %}" alt=""></i>
         {{ form.text }}
         <label for="{{ form.text.auto_id }}">{{ form.text.label }}</label>
         </div>
