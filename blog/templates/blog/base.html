@@ -74,7 +74,6 @@
                         <ul class="right hide-on-med-and-down">
                             <li><a href="{% url 'blog:index' %}" class="purple-text"><i
                                         class="left"><img src="{% static 'icons/home.svg' %}" style="border: red;"></i>INÍCIO</a></li>
-                            <li><a href="#" class="purple-text"><i class="left"><img src="{% static 'icons/phone.svg' %}"></i> CONTATO</a>
                             </li>
                             <li><a href="{% url 'blog:sobre' %}" class="purple-text"><i class="left"><img src="{% static 'icons/icons.svg' %}" alt=""></i> SOBRE</a></li>
                             <li><a href="#" class="black-text purple dropdown-trigger btn" data-target='dropdown1'><i
@@ -94,6 +93,7 @@
                                 {% else %}
 
                                 <li><a href="{% url 'login' %}">ENTRAR</a></li>
+                                <li><a href="{% url 'accounts:create-user' %}">REGISTRAR</a></li>
 
                                 {% endif %}
 
@@ -138,9 +138,8 @@
                                     height="60"></a></div>
                         <div>
                             <p class="lighten-1 purple-text" style="text-align: justify;">Projeto feito com o objetivo
-                                de postar artigos no blog,
-                                o mesmo tem as principais funções que um sistema WEB pode oferecer para o usuário como :
-                                criar, visualizar, editar e deletar os posts.</p>
+                                de postar artigos no blog, o mesmo tem as principais funções que um sistema WEB pode oferecer para o usuário como :
+                                criar, visualizar, editar, deletar os posts e criar conta pessoal.</p>
                         </div>
                     </div>
                 </div>

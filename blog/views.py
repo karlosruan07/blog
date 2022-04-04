@@ -9,8 +9,12 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    posts = Post.objects.order_by('-created_data')
-    context = {'posts': posts}
+    if request.user.is_authenticated:
+        posts = Post.objects.filter(author=request.user)
+        context = {'posts': posts}
+    else:
+        posts = Post.objects.order_by('-created_data')
+        context = {'posts': posts}
     return render(request, 'blog/post_list.html', context=context)
 
 

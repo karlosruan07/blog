@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="card darken-2" style="margin-top: 15px">
+
+    <div class="card-content">
+        <span class="card-title center"><h3>REGISTRE-SE</h3></span>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            {{ form | crispy }}
+            
+            <div class="center" style="margin-top: 20px"><button class="btn purple white-text"
+                    type="submit">ENVIAR</button></div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

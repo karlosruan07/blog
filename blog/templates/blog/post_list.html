@@ -2,6 +2,12 @@
 {% load static %}
 {% block content %}
 
+{% if posts %}
+
+{% if user.is_authenticated %}
+    <section class="center"><h4>SEUS POSTS </h4></section>
+{% endif %}
+
 {% for post in posts %}
 <div>
     <h3><a href="{% url 'blog:post-detail' pk=post.pk %}">{{ post.title }}</a></h3>
@@ -13,4 +19,14 @@
     <p class="truncate">{{ post.text|linebreaksbr }}</p>
 </div>
 {% endfor %}
+
+{% else %}
+
+<div style="margin-top: 30px; margin-bottom: 30px">
+    <h4 class="center">Você não tem posts cadastrados no nosso banco de dados !!</h4>
+    <div class="center"><button class="btn purple black-text z-depth-3 ">CRIAR POST</button></div>
+</div>
+
+{% endif %}
+
 {% endblock %}

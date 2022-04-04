@@ -7,7 +7,7 @@ urlpatterns = [
     path('', include('blog.urls')),#tudo o que virá sem diretórios na url será redireciondo para esse arquivo
     path('', include('django.contrib.auth.urls')),
 
-    path('accounts/',include('blog.urls')),
+    path('accounts/',include('accounts.urls')),
 
 ]
 
