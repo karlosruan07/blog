@@ -21,7 +21,7 @@ def index(request):
 @login_required
 def post_new(request):
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         
         if form.is_valid():
             post = form.save(commit=False) #não salva o modelo ainda, pois tem que salvar 1º o autor
@@ -49,7 +49,7 @@ def post_detail(request, pk):
 def post_edit(request, pk): #função para editar um post
      post = get_object_or_404(Post, pk=pk, author=request.user)#filta a linha da tabela pelo ID e pelo usuário que está autenticado
      if request.method == "POST":
-         form = PostForm(request.POST, instance=post)
+         form = PostForm(request.POST, request.FILES, instance=post)
          if form.is_valid():
              post = form.save(commit=False)
              post.author = request.user

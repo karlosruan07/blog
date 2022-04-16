@@ -1,0 +1,14 @@
+
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="center" style="margin-top: 15px; margin-bottom: 15px;"><img src="{% static 'img/img_404.svg' %}" alt="not found" class="responsive-img"></div>
+    <p class="center"><strong>A página requisitada não foi encontrada !</strong></p>
+    <br>
+    <div class="center"><a href="{% url 'blog:index' %}"><button class="btn azul">VOLTAR PARA O INÍCIO</button></a></div>
+    <br>
+{% endblock content %}
+

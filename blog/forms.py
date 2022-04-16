@@ -7,6 +7,6 @@ class PostForm(forms.ModelForm): #PostForm é o nome do formulario, e o forms.Mo
     
     class Meta:
         model = Post
-        fields = ('title', 'text')
+        fields = ('title', 'text', 'cover')
         
         

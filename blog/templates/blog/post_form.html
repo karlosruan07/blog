@@ -2,13 +2,15 @@
 
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 <h3 class="title center">{{ titulo }}</h3>
 
-    <form method="POST" style="margin: 2%;">
+    <form method="POST" style="margin: 2%;" enctype="multipart/form-data">
 
     {% csrf_token %} 
-        
+    
     <div class="input-field">
     <i class="material-icons prefix"><img src="{% static 'icons/title.svg' %}"></i>
     {{ form.title }}
@@ -21,7 +23,25 @@
         <label for="{{ form.text.auto_id }}">{{ form.text.label }}</label>
         </div>
     
-    <div class="center"><button type="submit" class="btn purple black-text">{{ titulo_botao }}</button></div>
+    <div class="file-field input-field">
+        <div class="btn purple black-text">
+          <span>{{ form.cover.label }} <i class="material-icons"><img src="{% static 'icons/image.svg' %}" alt=""></i> </span>
+          {{ form.cover }}
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+    </div>
+
+    {% comment %}
+
+    {{ form | crispy }}
+
+    {% endcomment %}
+
+    <div class="center" style="margin-top: 75px;">
+      <button type="submit" class="btn purple black-text">{{ titulo_botao }} <i class="material-icons"> <img src="{% static 'icons/send.svg' %}" alt=""></i></button>
+    </div>
 
     </form>
 

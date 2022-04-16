@@ -8,8 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-
     <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
 
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
@@ -31,20 +29,33 @@
             <ul id="slide-out" class="sidenav">
                 <li>
                     <div class="user-view">
-                        <div class="background">
-                            <img src="{% static 'img/moldura_mobile.jpg' %}">
+                        <div class="background purple">
+                            
                         </div>
                         <a href="#user"><img class="circle" src="{% static 'icons/account_box.svg' %}"></a>
-                        <a href="#name"><span class="white-text name">User</span></a>
-                        <a href="#email"><span class="white-text email">user@gmail.com</span></a>
+
+                        {% if request.user.is_authenticated %}
+                        <ul>
+                            <li class="white-text">{{ user }}</li>
+                            <li class="white-text">{{ user.email }}</li>
+                        </ul>
+
+                        {% endif %}
+
                     </div>
                 </li>
-                <li><a href="#"><i class="material-icons"><img src="{% static 'icons/description.svg' %}" alt=""></i>Alterar
-                        Dados</a></li>
-                <li><a href="#"><i class="material-icons"><img src="{% static 'icons/password.svg' %}" alt=""></i>Alterar Senha</a></li>
-                <li><a href="#"><i class="material-icons"><img src="{% static 'icons/lock.svg' %}" alt=""></i>Esqueci Minha Senha</a></li>
-                <li><a href="account/login/"><i class="material-icons"><img src="{% static 'icons/login.svg' %}" alt=""></i>Entrar</a></li>
-                <li><a href="account/logout/"><i class="material-icons"><img src="{% static 'icons/logout.svg' %}" alt=""></i>Sair</a></li>
+
+                {% if request.user.is_authenticated %}
+
+                <li><a href="{% url 'password_change' %}"><i class="material-icons"><img src="{% static 'icons/password.svg' %}" alt=""></i>Alterar Senha</a></li>
+                <li><a href="{% url 'logout' %}"><i class="material-icons"><img src="{% static 'icons/logout.svg' %}" alt=""></i>Sair</a></li>
+
+                {% else %}
+
+                <li><a href="{% url 'login' %}"><i class="material-icons"><img src="{% static 'icons/login.svg' %}" alt=""></i>Entrar</a></li>
+
+                {% endif %}
+
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -68,8 +79,7 @@
 
                         {% endif %}
 
-                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"
-                                ><img src="{% static 'icons/menu.svg' %}" style="color: #ffffff" ></i></a>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"><img src="{% static 'icons/menu.svg' %}" style="color: #ffffff" ></i></a>
 
                         <ul class="right hide-on-med-and-down">
                             <li><a href="{% url 'blog:index' %}" class="purple-text"><i
@@ -87,13 +97,17 @@
 
                                 <li><a href="{% url 'blog:post-new' %}">ADICIONAR POST</a></li>
                                 <li class="divider" tabindex="-1"></li>
+                                
+                                <li><a href="{% url 'password_change' %}">MUDAR SENHA</a></li>
+                                <li class="divider" tabindex="-1"></li>
+
                                 <li><a href="{% url 'logout' %}">SAIR</a></li>
                                 <li class="divider" tabindex="-1"></li>
 
                                 {% else %}
 
                                 <li><a href="{% url 'login' %}">ENTRAR</a></li>
-                                <li><a href="{% url 'accounts:create-user' %}">REGISTRAR</a></li>
+                                <li><a href="{% url 'create-user' %}">REGISTRAR</a></li>
 
                                 {% endif %}
 
