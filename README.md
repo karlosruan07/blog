@@ -95,8 +95,18 @@ Abra o navegador de sua preferência e vá para http://127.0.0.1:8000
 
 <br>
 
-### Autor
 ---
+
+## REFERÊNCIAS
+
+- [Documentação oficial do Django](https://www.djangoproject.com/)
+- [Tutorial Django Girls](https://tutorial.djangogirls.org/pt/)
+- [Materialize CSS](https://materializecss.com/)
+
+<br>
+
+# Autor
+
 
 <a href="https://github.com/karlosruan07">
  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/67886437?s=400&u=65cd9dfe1178a9ddb831744e42769b9771948998&v=4" width="100px;" alt=""/>
